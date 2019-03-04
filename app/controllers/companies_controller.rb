@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: %i[destroy edit update show]
+  before_action :authenticate_user!, only: :show
   def index
     @companies = Company.all
     @company = Company.new
