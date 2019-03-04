@@ -2,5 +2,5 @@
   <td><%= company.name %></td>
   <td>VER</td>
   <td>EDITAR</td>
-  <td>ELIMINAR</td>
+  <td><%= link_to 'Eliminar', company_path(company.id), data: {method: :delete, remote: true}, class:'btn btn-danger btn-sm' %></td>
 </tr>

@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+  before_action :set_company, only: [:destroy]
   def index
     @companies = Company.all
     @company = Company.new
@@ -10,14 +11,24 @@ class CompaniesController < ApplicationController
       respond_to :js
     else
       redirect_to root_path, alert:"Error al crear una empresa, intente nuevamente"
-      
     end
   end
+
+  def destroy
+    @company.destroy
+    respond_to :js
+  end
+  
 
   private
 
   def company_params
     params.require(:company).permit(:name)
   end
+
+  def set_company
+    @company = Company.find(params[:id])
+  end
+  
   
 end
