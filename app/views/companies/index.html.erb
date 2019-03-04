@@ -1,2 +1,20 @@
-<h1>Companies#index</h1>
-<p>Find me in app/views/companies/index.html.erb</p>
+<h1>Creación de empresas:</h1>
+<%= render 'shared/form', company: @company %>
+<br>
+<h1>Listado de empresas:</h1>
+<table class="table table-striped table-dark">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody class="company-tbody">
+      <%= render @companies %>
+    </tbody>
+</table>
+
+  
+
