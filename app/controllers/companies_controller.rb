@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: [:destroy]
+  before_action :set_company, only: %i[destroy edit update show]
   def index
     @companies = Company.all
     @company = Company.new
@@ -14,11 +14,27 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def show
+    respond_to :js
+  end
+  
+
+  def edit
+    respond_to :js
+  end
+
+  def update
+    if @company.update(company_params)
+      respond_to :js
+    else
+      redirect_to root_path, alert: 'Error al actualizar la empresa, intente nuevamente'
+    end
+  end
+
   def destroy
     @company.destroy
     respond_to :js
   end
-  
 
   private
 
@@ -29,6 +45,6 @@ class CompaniesController < ApplicationController
   def set_company
     @company = Company.find(params[:id])
   end
-  
-  
+
+
 end
