@@ -2,7 +2,7 @@ class CompaniesController < ApplicationController
   before_action :set_company, only: %i[destroy edit update show]
   before_action :authenticate_user!, only: :show
   def index
-    @companies = Company.all
+    @companies = Company.order('id DESC')
     @company = Company.new
   end
 
@@ -16,9 +16,11 @@ class CompaniesController < ApplicationController
   end
 
   def show
+    @complain = Complain.new
+    @complains = @company.complains.order('id DESC')
     respond_to :js
   end
-  
+
 
   def edit
     respond_to :js

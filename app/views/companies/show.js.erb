@@ -1,3 +1,4 @@
 $('.modal-title').text("Empresa: <%= @company.name%>" );
-$('.modal-body').html('TODO')
+$('.modal-body').html("<%= j render 'shared/complain_form', company: @company, complain: @complain%>");
+$('.modal-footer').html("<div id='complains-container'> <%= j render @complains %> </div>");
 $('.modal').modal('show');

@@ -1,0 +1,7 @@
+<%= form_with(model: [company, complain]) do |f| %>
+  <div class="form-group">
+    <%= f.label :content, "Escribe tu reclamo" %>
+    <%= f.text_field :content, class:'form-control', id:'complain-input' %>
+  </div>
+  <%= f.submit "Enviar", class:'btn btn-primary' %>
+<% end %>
